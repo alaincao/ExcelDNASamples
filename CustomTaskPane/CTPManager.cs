@@ -19,8 +19,10 @@ namespace CustomTaskPane
                 ctp = CustomTaskPaneFactory.CreateCustomTaskPane(typeof(ContentControl), "My Super Task Pane");
                 ctp.Visible = true;
                 ctp.DockPosition = MsoCTPDockPosition.msoCTPDockPositionLeft;
+				/*
                 ctp.DockPositionStateChange += ctp_DockPositionStateChange;
                 ctp.VisibleStateChange += ctp_VisibleStateChange;
+				*/
             }
             else
             {

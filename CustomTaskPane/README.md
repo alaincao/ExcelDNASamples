@@ -1,7 +1,6 @@
 # Test project to demonstrate keyboard focus issue with ExcelDNA + TaskPane + WebView2
 
 cf. issue at https://github.com/MicrosoftEdge/WebView2Feedback/issues/933  
-The demo project is at [./CustomTaskPane/](./CustomTaskPane/)
 
 0) Open an empty Excel file  
 1) Click show task pane  
