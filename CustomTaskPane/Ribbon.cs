@@ -16,6 +16,7 @@ namespace CustomTaskPane
         <group id='SampleGroup' label='CTP Control'>
             <button id='Button1' label='Show CTP' size='large' onAction='OnShowCTP' />
             <button id='Button2' label='Delete CTP' size='large' onAction='OnDeleteCTP' />
+            <button id='Button3' label='RunInDotnet()' size='large' onAction='RunInDotnet' />
         </group >
         </tab>
     </tabs>
@@ -34,5 +35,10 @@ namespace CustomTaskPane
         {
             CTPManager.DeleteCTP();
         }
+
+		public void RunInDotnet(IRibbonControl control)
+		{
+			ContentControl.RunInDotnet();
+		}
     }
 }

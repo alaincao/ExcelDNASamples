@@ -1,11 +1,11 @@
-# Test project to demonstrate keyboard focus issue with ExcelDNA + TaskPane + WebView2
+# Test project to demonstrate issue with Excel COM object when used by JavaScript as hostObject in a WebView2 control
 
-cf. issue at https://github.com/MicrosoftEdge/WebView2Feedback/issues/933  
-
-0) Open an empty Excel file  
-1) Click show task pane  
-2) Test that the arrow keys/page up|down/etc. are still moving the Excel's cursor in the worksheet  
-3) Click the WebView2 so it takes control  
-4) Back to (2), the arrow keys/page up|down/etc. are still moving the WebView's page, but not the Excel's cursor anymore  
-5) Focus on another window and go back, everything is back to normal (2)  
+1) When the little automation script is run from C#, the execution successfully completes  
+   (cf. `RunInDotnet()` in `ContentControl.cs`)  
+2) When the same automation script is run from JavaScript,  
+   (cf. `runInJavaScript()` in `barfoo.html`)  
+   the execution fails with  
+   ```
+    VM6:2 Uncaught Error: Member not found. (0x80020003)
+   ```  
 ![alt text](screenshot01.png "Logo Title Text 1")

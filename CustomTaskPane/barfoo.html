@@ -1,0 +1,46 @@
+<html>
+<head>
+	<title>Hello world</title>
+</head>
+<body>
+
+	<button onclick="runInJavaScript()">runInJavaScript()</button>
+
+	<script type="text/javascript">
+		async function runInJavaScript()
+		{
+			var excel = chrome.webview.hostObjects.excel;
+			var cell = await excel.ActiveCell;
+			cell.Value = 56;
+			var cell2 = await excel.ActiveCell.Cells(2, 2);		// Crash with: "VM6:2 Uncaught Error: Member not found. (0x80020003)"
+															// AND
+																/*
+																Uncaught (in promise) {remoteObjectId: 0, methodName: "", parameters: {�}, callId: 16}
+																Promise.then(async)
+																createPublicObject @VM6: 1
+																applyHostFunction @VM6: 1
+																apply @VM6: 1
+																	(anonymous) @VM289: 1
+																*/
+			cell.Cells(2, 2).Value = 78;  // Crash with
+										/*
+										Uncaught(in promise) { remoteObjectId: 0, methodName: "", parameters: { � }, callId: 23 }
+										Promise.then(async)
+										createPublicObject @VM6: 1
+										applyHostFunction @VM6: 1
+										apply @VM6: 1
+											(anonymous) @VM552: 1
+										*/
+									// AND
+										/*
+										Uncaught (in promise) {remoteObjectId: 0, methodName: "", parameters: {�}, callId: 23}
+										Promise.then (async)
+										setHostProperty @ VM6:1
+										_setAmbiguous @ VM6:1
+										set @ VM6:1
+										(anonymous) @ VM552:1
+										*/
+		}
+	</script>
+</body>
+</html>
